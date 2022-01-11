@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_ui_c4/Screens/detay.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -137,13 +138,21 @@ class _HomePageState extends State<HomePage> {
                     Positioned(
                         left: 15,
                         top: 10,
-                        child: Container(
-                          height: 200,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                                image: AssetImage("3.jpg"), fit: BoxFit.cover),
+                        child: InkWell(
+                          onTap: () {
+                            debugPrint("Resme Basıldı");
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Detay(imgPath: "3.jpg")));
+                          },
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: const DecorationImage(
+                                  image: AssetImage("3.jpg"),
+                                  fit: BoxFit.cover),
+                            ),
                           ),
                         )),
                     Positioned(

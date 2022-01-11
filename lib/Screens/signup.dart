@@ -122,6 +122,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         padding: const EdgeInsets.only(
                             left: 10.0, right: 10, top: 30),
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           cursorColor: Color(0xffFF8A00),
                           decoration: InputDecoration(
                             icon: Icon(
@@ -195,7 +196,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 10.0, right: 10, top: 30),
-                        child: TextFormField(
+                        child: TextFormField( keyboardType: TextInputType.number,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
@@ -235,7 +236,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 10.0, right: 10, top: 30),
-                        child: TextFormField(
+                        child: TextFormField( keyboardType: TextInputType.number,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,

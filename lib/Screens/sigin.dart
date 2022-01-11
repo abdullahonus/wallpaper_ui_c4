@@ -118,6 +118,7 @@ class _SignInPageState extends State<SignInPage> {
                         padding: const EdgeInsets.only(
                             left: 10.0, right: 10, top: 30),
                         child: TextFormField(
+                           keyboardType: TextInputType.number,
                           obscureText: true,
                           enableSuggestions: false,
                           autocorrect: false,
