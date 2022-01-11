@@ -101,7 +101,7 @@ class _MainScreenState extends State<MainScreen> {
               child: ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => SignUpPage(),
+                      builder: (context) => const SignUpPage(),
                     ));
                   },
                   style: ElevatedButton.styleFrom(

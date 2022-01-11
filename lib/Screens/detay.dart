@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
+import 'dart:async';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class Detay extends StatefulWidget {
   var imgPath;
   Detay({Key? key, this.imgPath}) : super(key: key);
@@ -10,6 +11,30 @@ class Detay extends StatefulWidget {
 }
 
 class _DetayState extends State<Detay> {
+  verify() {
+    setState(() {
+      _isLoading = true;
+    });
+    const oneSec = Duration(milliseconds: 1000);
+    _timer = Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        setState(() {
+          _isLoading = false;
+          _isVerified = true;
+        });
+      },
+    );
+  }
+
+  late Timer _timer;
+  int _start = 10;
+  bool _isLoading = false;
+
+  bool _isVerified = false;
+
+  String _code = '';
+
   @override
   Widget build(BuildContext context) {
     double sizeHeight = MediaQuery.of(context).size.height;
@@ -68,26 +93,45 @@ class _DetayState extends State<Detay> {
                 fontWeight: FontWeight.w600),
           )),
       Positioned(
-          bottom: 50,
-          left: 15,
-          child: ElevatedButton(
+        bottom: 50,
+        left: 15,
+        child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              fixedSize: const Size(180, 50),
-              primary: const Color(0xffFF8A00),
-            ),
-            onPressed: () {},
-            child: const Text(
-              "Download",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: "mont",
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-          )),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                primary: const Color(0xffFF8A00),
+                fixedSize: const Size(180, 50)),
+            onPressed: _code.length == 1
+                ? null
+                : () {
+                    verify();
+                  },
+            child: _isLoading
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.white,
+                      strokeWidth: 3,
+                      color: Colors.white,
+                    ),
+                  )
+                : _isVerified
+                    ? const Icon(
+                        Icons.check_circle,
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    : const Text(
+                        "Download",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "mont",
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      )),
+      ),
       Positioned(
           bottom: 50,
           right: 15,

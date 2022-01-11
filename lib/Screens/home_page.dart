@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           ],
-          backgroundColor: Color(0xff233E50),
+          backgroundColor: const Color(0xff233E50),
           elevation: 0,
           leading: const Padding(
             padding: EdgeInsets.all(20.0),
